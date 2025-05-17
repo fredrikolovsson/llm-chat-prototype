@@ -1,0 +1,46 @@
+---
+description:
+globs:
+alwaysApply: true
+---
+# Plan for what to build
+
+This plan describes the end goal. Update it with the progress.
+
+## API and implementation notes
+
+### Get chat rooms
+
+Return all chat rooms for the userId
+
+### Get chat messages by chat room id
+
+Use offset and limit to implement pagination. Sort by latest first.
+
+### Post chat message in chat room
+
+1. If no LLM has been assigned to the chat room, first call 4.1-mini with the message and let it decide which LLM should be used from among 4o, 4.1-mini, o3, o4-mini, claude-3.7, claude-3.7-thinking
+2. Once a model has been chosen, update the room with the selection and call the model to get the response
+3. Send the responses over the socket.
+
+### Connect socket
+
+Let the client connect a socket per userId.
+
+## Services
+
+### OpenAI
+
+Build with the latest OpenAI Response API, instead of the older chat completions
+
+### Anthropic
+Anthropic chat completion
+
+## DB
+Use Supabase to model the data and interact with the db
+
+# Scratch pad
+
+You can write notes here as you learn from what the developer wants.
+
+***Add notes below here***
